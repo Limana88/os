@@ -1,3 +1,5 @@
+#!/opt/homebrew/bin/python3
+
 import os
 import random as rnd
 import time
@@ -22,7 +24,7 @@ def work(fork_count: int):
 		child_pid, exit_code = os.wait()
 		exit_code = os.waitstatus_to_exitcode(exit_code)
 		if child_pid != 0:
-			print('Parent[', os.getpid(), ']: Child with PID', child_pid, 'terminated. Exit Status', os.waitstatus_to_exitcode(exit_code),'.')
+			print('Parent[', os.getpid(), ']: Child with PID', child_pid, 'terminated. Exit Status', exit_code,'.')
 			processes.remove(child_pid)
 			if exit_code != 0:
 				processes.append(fork())
